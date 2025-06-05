@@ -15,7 +15,7 @@ export default function BackgroundScene() {
     <>
       <ambientLight intensity={1.5} />
       <directionalLight position={[3, 3, 3]} />
-      <Box ref={boxRef} args={[2, 2, 2]} position={[0, 0, 0]}>
+      <Box ref={boxRef} args={[2, 2, 2]} position={[0, -1, 0]}>
         <meshStandardMaterial color="white" />
       </Box>
       <OrbitControls enableZoom={false} />
