@@ -114,7 +114,7 @@ export default function Resume() {
                 >
                   <HoverPreview
                     text="Vantage Group"
-                    image="/Vantage.png"
+                    image="./Vantage.png"
                     link="https://www.vantagemarkets.com/"
                   />
                 </a>)</span>
