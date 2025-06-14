@@ -40,27 +40,25 @@ export default function Resume() {
       <ResumeSection id="header">
         <div className="relative text-left">
           <h1 className="text-3xl md:text-5xl font-bold tracking-widest mb-2">CHI-WEI FENG</h1>
+          <div className="text-xs md:text-base mb-2 space-x-4 border border-gray-300 rounded px-2 py-2">
+            <AgeTimer />
+          </div>
           <div className="text-xs md:text-base mb-1">Email: s481597@gmail.com | Phone: (+886) 975-802-185</div>
-          <div className="text-xs md:text-base mb-4">Aspiring Software Engineer | Open to Internships & Graduate Roles | MSc CS @ Bristol (2025)</div>
-          <div className="text-xs md:text-base mb-4">
-            <div className="flex justify-between items-center">
-              <div className="flex space-x-4">
-                <AgeTimer />
-              </div>
-              <div className="flex space-x-4">
-                <TooltipLink href="mailto:s481597@gmail.com" label="Gmail">
-                  <Mail size={20} />
-                </TooltipLink>
-                <TooltipLink href="https://www.linkedin.com/in/cwf8982" label="LinkedIn">
-                  <Linkedin size={20} />
-                </TooltipLink>
-                <TooltipLink href="https://github.com/chiwei82" label="GitHub">
-                  <Github size={20} />
-                </TooltipLink>
-                <TooltipLink href="/cv.pdf" label="Download Resume" download>
-                  <Download size={20} />
-                </TooltipLink>
-              </div>
+          <div className="text-xs md:text-base mb-2">Aspiring Software Engineer | Open to Internships & Graduate Roles | MSc CS @ Bristol (2025)</div>
+          <div className="text-xs md:text-base mb-1">
+            <div className="flex justify-end space-x-4">
+              <TooltipLink href="mailto:s481597@gmail.com" label="Gmail">
+                <Mail size={20} />
+              </TooltipLink>
+              <TooltipLink href="https://www.linkedin.com/in/cwf8982" label="LinkedIn">
+                <Linkedin size={20} />
+              </TooltipLink>
+              <TooltipLink href="https://github.com/chiwei82" label="GitHub">
+                <Github size={20} />
+              </TooltipLink>
+              <TooltipLink href="/cv.pdf" label="Download Resume" download>
+                <Download size={20} />
+              </TooltipLink>
             </div>
           </div>
         </div>
