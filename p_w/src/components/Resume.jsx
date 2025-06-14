@@ -3,6 +3,7 @@ import ResumeSection from './ResumeSection';
 import { Github, Linkedin, Mail, Download } from 'lucide-react'
 import TooltipLink from './ui/TooltipLink';
 import HoverPreview from './ui/HoverPreview'
+import AgeTimer from './AgeTimer'
 
 const skillChunks = [
   {
@@ -41,19 +42,26 @@ export default function Resume() {
           <h1 className="text-3xl md:text-5xl font-bold tracking-widest mb-2">CHI-WEI FENG</h1>
           <div className="text-xs md:text-base mb-1">Email: s481597@gmail.com | Phone: (+886) 975-802-185</div>
           <div className="text-xs md:text-base mb-4">Aspiring Software Engineer | Open to Internships & Graduate Roles | MSc CS @ Bristol (2025)</div>
-          <div className="flex justify-end space-x-4">
-            <TooltipLink href="mailto:s481597@gmail.com" label="Gmail">
-              <Mail size={20} />
-            </TooltipLink>
-            <TooltipLink href="https://www.linkedin.com/in/cwf8982" label="LinkedIn">
-              <Linkedin size={20} />
-            </TooltipLink>
-            <TooltipLink href="https://github.com/chiwei82" label="GitHub">
-              <Github size={20} />
-            </TooltipLink>
-            <TooltipLink href="/cv.pdf" label="Download Resume" download>
-              <Download size={20} />
-            </TooltipLink>
+          <div className="text-xs md:text-base mb-4">
+            <div className="flex justify-between items-center">
+              <div className="flex space-x-4">
+                <AgeTimer />
+              </div>
+              <div className="flex space-x-4">
+                <TooltipLink href="mailto:s481597@gmail.com" label="Gmail">
+                  <Mail size={20} />
+                </TooltipLink>
+                <TooltipLink href="https://www.linkedin.com/in/cwf8982" label="LinkedIn">
+                  <Linkedin size={20} />
+                </TooltipLink>
+                <TooltipLink href="https://github.com/chiwei82" label="GitHub">
+                  <Github size={20} />
+                </TooltipLink>
+                <TooltipLink href="/cv.pdf" label="Download Resume" download>
+                  <Download size={20} />
+                </TooltipLink>
+              </div>
+            </div>
           </div>
         </div>
       </ResumeSection>
