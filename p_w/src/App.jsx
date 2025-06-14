@@ -22,7 +22,7 @@ export default function App() {
             fov: 45,
             near: 0.1,
             far: 200,
-            position: [ 0, 0, 8 ]
+            position: [ 0, 0, 10 ]
         }}
       >
           <HeaderBox />
@@ -34,7 +34,7 @@ export default function App() {
       {/* 上層內容 */}
       <div className="relative z-10">
         <Resume />
-        <TableOfContents />
+        {/* <TableOfContents /> */}
         {/* 其他內容 */}
         <footer className="w-full text-center text-xs text-[#BDBDAC] py-4">
           © {new Date().getFullYear()} Chi-Wei Feng. All rights reserved.
