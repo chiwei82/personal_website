@@ -9,6 +9,7 @@ const material = new THREE.MeshMatcapMaterial()
 export default function HeaderBox()
 {
     const donuts = useRef([])
+    const text = useRef()
 
     const [ matcapTexture ] = useMatcapTexture('C47004_F9D00C_EDAF04_E09704', 256)
 
@@ -18,6 +19,9 @@ export default function HeaderBox()
         {
             donut.rotation.y += delta * 2
         }
+
+        // floating
+        text.current.position.y = Math.sin(state.clock.elapsedTime * 1.5)
     })
 
     useEffect(() =>
@@ -44,6 +48,7 @@ export default function HeaderBox()
                 bevelSize={ 0.02 }
                 bevelOffset={ 0 }
                 bevelSegments={ 5 }
+                ref={text}
             >
                 HELLO WORLD
             </Text3D>
