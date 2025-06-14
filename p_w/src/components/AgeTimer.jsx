@@ -29,10 +29,19 @@ export default function AgeTimer() {
   }, []);
 
   return (
-    <div className="text-xs md:text-sm font-mono text-gray-500">
-      🎂 I am {`${age.years} Years ${age.days} Days and`}
+    <div className="text-xs md:text-sm font-mono">
+      {'>>>'} Time since birth:
       <br />
-      {`${age.hours} Hours ${age.minutes} Minutes ${age.seconds} Seconds old`}
+      <span className="inline-block whitespace-nowrap">
+      {'>>> '}
+        <span className="pl-0">{`${age.years} Years,`}</span>
+        <span className="pl-1">{`${age.days} Days`}</span>
+        <br />
+        {'>>> '}
+        <span className="pl-0">{`${age.hours} Hours,`}</span>
+        <span className="pl-1">{`${age.minutes} Minutes,`}</span>
+        <span className="pl-1">{`${age.seconds} Seconds`}</span>
+      </span>
     </div>
   );
 }
