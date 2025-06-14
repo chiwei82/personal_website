@@ -4,6 +4,7 @@ import TableOfContents from './components/ui/TableOfContents.jsx'
 import BackgroundScene from './components/three/BackgroundScene.jsx'
 import HeaderBox from './components/three/objects/headerBox.jsx'
 import { Canvas } from '@react-three/fiber'
+import { EffectComposer, DotScreen } from '@react-three/postprocessing'
 
 export default function App() {
   return (
@@ -16,23 +17,29 @@ export default function App() {
           <BackgroundScene />
         </Canvas>
       </div>
-      <Canvas>
+      <Canvas
+        camera={ {
+            fov: 45,
+            near: 0.1,
+            far: 200,
+            position: [ 0, 0, 8 ]
+        }}
+      >
           <HeaderBox />
+          {/* <EffectComposer>
+            <DotScreen angle={Math.PI / 4} scale={1.5} />
+          </EffectComposer> */}
       </Canvas>
 
       {/* 上層內容 */}
-      <Resume />
-      <TableOfContents />
-
-      {/* 固定右下角聯絡按鈕 */}
-      {/* <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000 }}>
-        <Contact />
-      </div> */}
-
-      {/* 頁尾資訊 */}
-      <footer className="w-full text-center text-xs text-[#BDBDAC] py-4">
-        © {new Date().getFullYear()} Chi-Wei Feng. All rights reserved.
-      </footer>
+      <div className="relative z-10">
+        <Resume />
+        <TableOfContents />
+        {/* 其他內容 */}
+        <footer className="w-full text-center text-xs text-[#BDBDAC] py-4">
+          © {new Date().getFullYear()} Chi-Wei Feng. All rights reserved.
+        </footer>
+      </div>
     </div>
   )
 }
