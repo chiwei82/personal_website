@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-const torusGeometry = new THREE.IcosahedronGeometry()
+const IcosahedronGeometry = new THREE.IcosahedronGeometry()
 const material = new THREE.MeshMatcapMaterial()
 
 export default function HeaderBox()
@@ -58,7 +58,7 @@ export default function HeaderBox()
             <mesh
                 ref={ (element) => donuts.current[index] = element }
                 key={ index }
-                geometry={ torusGeometry }
+                geometry={ IcosahedronGeometry }
                 material={ material }
                 position={ [
                     (Math.random() - 0.5) * 50,
