@@ -17,7 +17,7 @@ html, body, #root {
   overflow-y: auto;   /* ✅ 允許垂直滾動 */
   background-color: #7B815F;
   font-family: 'Fira Sans', sans-serif;
-  color: #BDBDAC;
+  color: #e6e6d6;
   scroll-behavior: smooth;
 }
 
