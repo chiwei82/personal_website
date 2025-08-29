@@ -30,7 +30,7 @@ export default function Background() {
 
   return (
     <mesh ref={meshRef} position={[0, 0, -1]}>
-      <planeGeometry args={[24, 12]} />
+      <planeGeometry args={[24, 16]} />
       <primitive object={shaderMaterial} attach="material" />
     </mesh>
   )
