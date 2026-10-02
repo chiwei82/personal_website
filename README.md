@@ -20,11 +20,11 @@ An interactive resume website with a 3D WebGL scene behind the content, deployed
 
 ## Page Structure (top to bottom)
 
-The page is assembled in [`src/App.jsx`](src/App.jsx). Components are listed in the order they appear on screen.
+All source code lives in the [`site/`](site) folder. The page is assembled in [`src/App.jsx`](site/src/App.jsx). Components are listed in the order they appear on screen.
 
 ### 1. Animated Background — `components/three/BackgroundScene.jsx`
 A fixed, full-screen React Three Fiber `<Canvas>` sitting behind all content (`z-0`).
-- Renders a plane with a `THREE.ShaderMaterial` built from the shaders in [`components/three/shader/bgShader.jsx`](src/components/three/shader/bgShader.jsx).
+- Renders a plane with a `THREE.ShaderMaterial` built from the shaders in [`components/three/shader/bgShader.jsx`](site/src/components/three/shader/bgShader.jsx).
 - The fragment shader generates triangular-grid noise and animates it via an `iTime` uniform, updated every frame in `useFrame`.
 - Opacity is controlled by a `uStrength` uniform written to the alpha channel, so the effect blends softly over the page's background colour.
 
@@ -32,7 +32,7 @@ A fixed, full-screen React Three Fiber `<Canvas>` sitting behind all content (`z
 
 ### 2. 3D Hero — `components/three/objects/headerBox.jsx`
 A second `<Canvas>` (perspective camera, FOV 45) at the top of the page.
-- Floating **"HELLO WORLD"** 3D text made with Drei's `<Text3D>` and a custom typeface font ([`public/PSR.json`](public/PSR.json)), bobbing up and down with a sine wave.
+- Floating **"HELLO WORLD"** 3D text made with Drei's `<Text3D>` and a custom typeface font ([`public/PSR.json`](site/public/PSR.json)), bobbing up and down with a sine wave.
 - 100 randomly placed, continuously rotating icosahedrons. All of them share a single geometry and a single material instance.
 - Uses a matcap texture (`useMatcapTexture`) for lighting-free shading, and `OrbitControls` so visitors can drag to rotate the scene.
 
@@ -40,15 +40,15 @@ A second `<Canvas>` (perspective camera, FOV 45) at the top of the page.
 
 ### 3. Resume Content — `components/Resume.jsx`
 The main content layer (`z-10`), rendered above both canvases. Each block is wrapped in
-[`ResumeSection.jsx`](src/components/ResumeSection.jsx), which provides consistent width (`max-w-3xl`), padding and an anchor `id`.
+[`ResumeSection.jsx`](site/src/components/ResumeSection.jsx), which provides consistent width (`max-w-3xl`), padding and an anchor `id`.
 
 **Tech:** React, Tailwind CSS (responsive `md:` breakpoints)
 
 #### 3a. Header
 - Name and visa-eligibility line.
-- **Age timer** — [`components/AgeTimer.jsx`](src/components/AgeTimer.jsx): a terminal-style live counter showing time since birth in years, days, hours, minutes and seconds, refreshed every second with `setInterval` inside `useEffect`.
+- **Age timer** — [`components/AgeTimer.jsx`](site/src/components/AgeTimer.jsx): a terminal-style live counter showing time since birth in years, days, hours, minutes and seconds, refreshed every second with `setInterval` inside `useEffect`.
 - Contact line (email, phone, LinkedIn).
-- **Icon links** — [`components/ui/TooltipLink.jsx`](src/components/ui/TooltipLink.jsx): Gmail, LinkedIn, LeetCode, GitHub and CV download, each with a hover tooltip. On click, it sends a `react-ga4` event: `Download / Resume_Download` for the CV, `Outbound Link / Click` for everything else.
+- **Icon links** — [`components/ui/TooltipLink.jsx`](site/src/components/ui/TooltipLink.jsx): Gmail, LinkedIn, LeetCode, GitHub and CV download, each with a hover tooltip. On click, it sends a `react-ga4` event: `Download / Resume_Download` for the CV, `Outbound Link / Click` for everything else.
 
 **Tech:** React hooks, lucide-react, react-ga4
 
@@ -84,30 +84,34 @@ These components are in the repo but are not mounted (imports or usages are comm
 ## Project Structure
 
 ```
-src/
-├── main.jsx                  # React entry point
-├── App.jsx                   # Page layout: canvases, content, footer
-├── index.css                 # Global styles (Tailwind)
-└── components/
-    ├── Resume.jsx            # All resume content
-    ├── ResumeSection.jsx     # Section wrapper
-    ├── AgeTimer.jsx          # Live age counter
-    ├── Noise.jsx             # (unused) noise overlay
-    ├── three/
-    │   ├── BackgroundScene.jsx
-    │   ├── objects/headerBox.jsx
-    │   └── shader/bgShader.jsx
-    └── ui/
-        ├── TooltipLink.jsx
-        ├── HoverPreview.jsx      # (unused)
-        ├── TableOfContents.jsx   # (unused)
-        └── contact.jsx           # (unused)
-public/                       # Static assets: CV, 3D font, icons, images
+site/
+├── index.html                    # Analytics snippets, page title
+├── vite.config.js                # Vite plugins and GitHub Pages base path
+├── public/                       # Static assets: CV, 3D font, icons, images
+└── src/
+    ├── main.jsx                  # React entry point
+    ├── App.jsx                   # Page layout: canvases, content, footer
+    ├── index.css                 # Global styles (Tailwind)
+    └── components/
+        ├── Resume.jsx            # All resume content
+        ├── ResumeSection.jsx     # Section wrapper
+        ├── AgeTimer.jsx          # Live age counter
+        ├── Noise.jsx             # (unused) noise overlay
+        ├── three/
+        │   ├── BackgroundScene.jsx
+        │   ├── objects/headerBox.jsx
+        │   └── shader/bgShader.jsx
+        └── ui/
+            ├── TooltipLink.jsx
+            ├── HoverPreview.jsx      # (unused)
+            ├── TableOfContents.jsx   # (unused)
+            └── contact.jsx           # (unused)
 ```
 
 ## Getting Started
 
 ```bash
+cd site
 npm install
 npm run dev       # start dev server (exposed on the local network via --host)
 npm run build     # production build to dist/
